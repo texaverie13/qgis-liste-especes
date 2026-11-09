@@ -1,0 +1,41 @@
+[general]
+name=Liste d'espèces
+qgisMinimumVersion=3.22
+# SANS CETTE LIGNE, LE PLUGIN EST INVISIBLE SOUS QGIS 4.
+# qgisMaximumVersion absent, QGIS suppose la compatibilite jusqu'a la
+# fin de la ligne majeure du minimum, soit 3.99 : le plugin est alors
+# juge incompatible et n'apparait nulle part, sans message d'erreur.
+# Constate le 09/11/2026 sur QGIS 4. 3.22 + 4.99 est l'exemple donne
+# par la documentation de migration QGIS 4.
+qgisMaximumVersion=4.99
+description=Liste les espèces d'une couche naturaliste sans doublon, en regroupant sur le CD NOM (TAXREF) plutôt que sur le nom écrit.
+about=À partir d'une couche d'observations, l'extension rend la liste des espèces rencontrées :
+    nom scientifique, nom vernaculaire, CD NOM, nombre d'observations, et les colonnes
+    supplémentaires de votre choix — les statuts de protection, par exemple. Elle peut se limiter
+    à un groupe biologique lorsque la couche en porte un.
+    Le regroupement se fait sur le CD NOM, parce que lui seul rapproche « Abies alba » de
+    « Abies alba Mill., 1768 ». Sur une base réelle, les oiseaux passent de 457 lignes à
+    287 espèces et les chiroptères de 108 à 35. Un CD NOM mal saisi est rattaché au code
+    majoritaire, un nom vernaculaire divergent est signalé, et les déterminations incomplètes
+    (« Plecotus sp. », « Myotis blythii/Myotis myotis ») sont gardées à part au lieu d'être
+    comptées comme des espèces.
+    Une seconde table, « À vérifier », liste chaque arbitrage rendu et chaque ligne écartée :
+    c'est la liste des corrections à porter dans la base.
+    Les champs sont reconnus automatiquement ; les menus ne servent qu'à corriger une
+    reconnaissance.
+version=1.0.1
+author=Valérie Texier
+email=solution@terrargos.fr
+
+tracker=https://github.com/texaverie13/qgis-liste-especes/issues
+repository=https://github.com/texaverie13/qgis-liste-especes
+homepage=https://github.com/texaverie13/qgis-liste-especes
+
+category=Vector
+icon=icon.png
+experimental=False
+deprecated=False
+hasProcessingProvider=yes
+tags=species,biodiversity,taxonomy,taxref,naturalist,ecology,vector,table,duplicates,france
+changelog=1.0.1 — Déclare la compatibilité QGIS 4 (qgisMaximumVersion).
+    1.0.0 — Première version publique.
