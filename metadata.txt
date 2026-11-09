@@ -1,0 +1,39 @@
+[general]
+name=Liste d'espèces
+qgisMinimumVersion=3.22
+# SANS CETTE LIGNE, LE PLUGIN EST INVISIBLE SOUS QGIS 4.
+# qgisMaximumVersion absent, QGIS suppose la compatibilite jusqu'a la
+# fin de la ligne majeure du minimum, soit 3.99 : le plugin est alors
+# juge incompatible et n'apparait nulle part, sans message d'erreur.
+# Constate le 09/11/2026 sur QGIS 4. 3.22 + 4.99 est l'exemple donne
+# par la documentation de migration QGIS 4.
+qgisMaximumVersion=4.99
+# DESCRIPTION ET ABOUT EN ANGLAIS -- demande du depot officiel le
+# 09/11/2026. Ce sont les deux champs affiches sur la fiche publique,
+# lue par toute la communaute QGIS. Le nom reste « Liste d'especes »,
+# celui que le site et le README annoncent, et celui qu'on cherche dans
+# le gestionnaire d'extensions.
+description=Lists the species found in a naturalist observation layer without duplicates, grouping on the TAXREF CD NOM identifier rather than on the name as it was typed.
+about=French naturalist databases are filled in by several people over several years, and the same species ends up written in several ways: "Abies alba" on one row, "Abies alba Mill., 1768" on the next.
+    Grouping by name counts those as two species. This plugin groups on the CD NOM — the stable taxon identifier of the French TAXREF reference — so they count as one. Measured on a real field database: birds go from 457 rows to 287 species, bats from 108 to 35.
+    From a loaded vector layer it produces two tables. The first, Species, holds one row per species: scientific name, vernacular name, CD NOM, number of observations, and any extra columns you choose, such as protection statuses. It can be restricted to one biological group when the layer carries such a field.
+    The second, To check, records every judgement call and every discarded row — a mistyped CD NOM attached to the majority code, a vernacular name that diverges on a few rows, a row with no scientific name at all. It is the list of corrections to carry back into the database, not a technical log.
+    Incomplete determinations such as "Plecotus sp." or "Myotis blythii/Myotis myotis" are not treated as duplicates: they are kept in a column of their own and are not counted as species.
+    Fields are detected automatically; the drop-down menus are only there to correct a detection. The interface is in French, as the plugin targets French naturalist data.
+version=1.0.2
+author=Valérie Texier
+email=solution@terrargos.fr
+
+tracker=https://github.com/texaverie13/qgis-liste-especes/issues
+repository=https://github.com/texaverie13/qgis-liste-especes
+homepage=https://github.com/texaverie13/qgis-liste-especes
+
+category=Vector
+icon=icon.png
+experimental=False
+deprecated=False
+hasProcessingProvider=yes
+tags=species,biodiversity,taxonomy,taxref,naturalist,ecology,vector,table,duplicates,france
+changelog=1.0.2 — Description and About in English, as required by the official repository.
+    1.0.1 — Declares QGIS 4 compatibility (qgisMaximumVersion).
+    1.0.0 — First public release.
